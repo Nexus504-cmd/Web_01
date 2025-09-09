@@ -7,28 +7,30 @@
     <title>FlyPerú - Vuela más alto</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
 
     <header>
         <nav class="container">
-            <!-- Logo principal de FlyPerú -->
+
             <a href="index.html" class="logo">
                 <img src="../imagenes/logo.png" alt="FlyPerú Logo">
             </a>
-            
-            <!-- Menú de navegación principal -->
+
+
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="destinos.html">Destinos</a></li>
                 <li><a href="ofertas.html">Ofertas</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
-            
-            <!-- Contenedor del ícono de login en esquina superior derecha -->
+
+
             <div class="nav-login-container">
                 <a href="login.html" class="nav-login" aria-label="Iniciar sesión">
                     <span class="login-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
                             <polyline points="10 17 15 12 10 7"></polyline>
                             <line x1="15" y1="12" x2="3" y2="12"></line>
@@ -39,65 +41,112 @@
         </nav>
     </header>
 
-    <!-- 
-    ===============================================
-    CONTENIDO PRINCIPAL DE LA PÁGINA
-    ===============================================
-    -->
+
     <main>
-        <!-- 
-        ===============================================
-        SECCIÓN HERO - BANNER PRINCIPAL
-        ===============================================
-        Sección principal con imagen de fondo, título y subtítulo
-        Utiliza gradiente superpuesto para mejorar legibilidad
-        -->
-        <section class="hero">
+
+
+        <section class="head-main">
             <div class="container">
-                <!-- Título principal de la página -->
+
                 <h1>Vuela más alto con FlyPerú</h1>
-                <!-- Subtítulo descriptivo -->
+
                 <p>Descubre el mundo con nuestros vuelos seguros, cómodos y a los mejores precios</p>
             </div>
         </section>
 
-        <!-- 
-        ===============================================
-        FORMULARIO DE BÚSQUEDA DE VUELOS
-        ===============================================
-        Formulario principal que 'flota' sobre la sección hero
-        Permite buscar vuelos por origen, destino y fecha
-        Utiliza validación HTML5 (required)
-        -->
+
         <section class="container">
             <form class="search-form">
                 <div class="form-row">
-                    <!-- Campo de ciudad de origen -->
+
                     <div class="form-group">
                         <label for="origen">Origen</label>
-                        <input type="text" id="origen" name="origen" class="form-control" 
-                               placeholder="Ciudad de origen" required>
+                        <input type="text" id="origen" name="origen" class="form-control" placeholder="Ciudad de origen"
+                            required>
                     </div>
-                    
-                    <!-- Campo de ciudad de destino -->
+
+
                     <div class="form-group">
                         <label for="destino">Destino</label>
-                        <input type="text" id="destino" name="destino" class="form-control" 
-                               placeholder="Ciudad de destino" required>
+                        <input type="text" id="destino" name="destino" class="form-control"
+                            placeholder="Ciudad de destino" required>
                     </div>
-                    
-                    <!-- Campo de fecha de salida -->
+
+
                     <div class="form-group">
                         <label for="fecha">Fecha de salida</label>
                         <input type="date" id="fecha" name="fecha" class="form-control" required>
                     </div>
-                    
-                    <!-- Botón de búsqueda -->
+
+
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-large">Buscar Vuelos</button>
+                        <button type="submit" class="btn-vuelo">Buscar Vuelos</button>
                     </div>
                 </div>
             </form>
         </section>
 
-       
+        <section>
+            
+            <table class="section-1-table">
+                
+                <tbody>
+
+                    <tr>
+                        <td class="div-table-1">
+
+                        </td>
+                        <td class="div-table-1">
+
+                        </td>
+                        <td class="div-table-1">
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <table class="section-2-table">
+
+                <tbody>
+                    <tr>
+                        <td class="div-table-2">
+
+                        </td>
+                        <td class="div-table-2">
+
+                        </td>
+                        <td class="div-table-2">
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-container">
+            <div class="footer-content">
+                <ul>
+
+                </ul>
+
+            </div>
+            <div class="footer-content">
+
+            </div>
+
+            <div class="footer-content">
+
+            </div>
+        </div>
+
+    </footer>
+</body>
