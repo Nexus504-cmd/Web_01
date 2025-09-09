@@ -1,0 +1,88 @@
+.pagina-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 32px;
+}
+
+.login-form-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.login-logo {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-logo img {
+  height: 60px;
+  width: auto;
+}
+
+.form-title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.btn-login {
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  transition:  0.3s ease;
+}
+
+.btn-login:hover {
+  background: black;
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 16px;
+  text-decoration: none;
+  font-size: 14px
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
