@@ -1,6 +1,4 @@
-/* ===========================
-   RESET BÁSICO
-=========================== */
+/*  */
 * {
   margin: 0;
   padding: 0;
@@ -14,18 +12,14 @@ body {
   background-color: #f9f9f9;
 }
 
-/* ===========================
-   CONTENEDORES
-=========================== */
+/* */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* ===========================
-   HEADER + NAVBAR
-=========================== */
+/* */
 header {
   background: #004aad;
   /* Azul corporativo */
