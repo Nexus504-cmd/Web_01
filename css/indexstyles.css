@@ -1,0 +1,264 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*header*/
+.logo{
+  margin-right: 15rem;
+}
+.logo img{
+  height: 4rem;
+}
+
+.barra_navegacion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgb(51, 88, 207),rgb(58, 167, 244));
+  padding: 0.1rem 1.5rem;
+}
+
+.lista_links{
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.lista_links a{
+  color:white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0.5rem 0.5rem;
+  transition: 1.3s  ease;
+}
+
+.lista_links a:hover{
+  background-color: rgb(64, 167, 251);
+  border-radius: 5px;
+}
+
+/*cuerpo*/
+
+section{
+  display: block;
+}
+.textoimagenfondo{
+  padding: 5rem 8rem;
+}
+
+.textoimagenfondo h1{
+  color:aliceblue;
+  text-align: center;
+  font-weight: bold;
+}
+
+.textoimagenfondo p{
+  color:aliceblue;
+  text-align: center;
+  font-weight: bold;
+}
+
+.imagenfondo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../html/avion.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/*seccion formulario*/
+.formulario{
+  display: flex;
+  justify-content: center;
+}
+form{
+  display: flex;
+
+}
+
+.origen{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem;
+  gap:0.5rem;
+}
+.origen input{
+  padding: 0.5rem 0.5rem;
+  border-color: red;
+  border-radius: 5px;
+}
+
+
+.destino{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem;
+  gap:0.5rem;
+}
+
+.destino input{
+  padding: 0.5rem 0.5rem;
+  border-color: red;
+  border-radius: 5px;
+}
+
+.fechasalida{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem;
+  gap:0.5rem;
+  
+}
+.fechasalida input{
+  padding: 0.5rem 0.5rem;
+  border-color: red;
+  border-radius: 5px;
+}
+.boton{
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 1.5rem;
+  gap:0.5rem;
+}
+
+button{
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/*seccion cuerpo*/
+
+.cuerpo_ofertas{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 2rem;
+}
+
+
+main h1{
+  text-align: center;
+  padding: 2.5rem;
+}
+
+.div1{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}
+.div2{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}.div3{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}.div4{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}.div5{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}.div6{
+  grid-column: 2;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 18px;
+}
+
+.div1 h3{
+  padding: 0.9rem;
+}
+
+
+.div2{
+  grid-column: 3;
+  text-align: center;
+  
+}
+.div2 h3{
+  padding: 0.9rem;
+}
+
+.div3{
+  grid-column: 4;
+  text-align: center;
+}
+
+.div3 h3{
+  padding: 0.9rem;
+}
+
+
+.cuerpo_final{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 2rem;
+}
+
+.div4{
+  grid-column: 2;
+  text-align: center;
+}
+
+
+.div5{
+  grid-column: 3;
+  text-align: center;
+}
+
+.div6{
+  grid-column: 4;
+  text-align: center;
+}
+
+/*hover cuerpo_ofertas*/
+.div1:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.div2:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.div3:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.div4:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.div5:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.div6:hover{
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*footers*/
+footer{
+  background-color: #0c4a6e;
+  display: flex;
+  
+}
