@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    line-height: 1.6;
+}
+
+
+.logo {
+  margin-right: 15rem;
+}
+
+.logo img {
+  height: 4rem;
+}
+
+.barra_navegacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgb(51, 85, 207), rgb(58, 167, 244));
+  padding: 0.1rem 1.5rem;
+}
+
+.lista_links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.lista_links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0.5rem 0.5rem;
+  transition: 1.3s ease;
+}
+
+.lista_links a:hover {
+  background-color: rgb(64, 167, 251);
+  border-radius: 5px;
+}
+
+#hero {
+    padding-top: 2rem;
+    min-height: 60vh;
+    background: linear-gradient(rgba(15, 23, 23, 0.5), rgba(61, 7, 7, 0.5)), url('../imagenes/fondo_ofertas.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(246, 225, 225);
+
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+}
+
+#hero p {
+    color: white;
+    font-size: 18px;
+}
+
+
+#Ofertas {
+    padding-top: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 5rem;
+    background: white;
+
+}
+
+#Ofertas h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  font-size: 28px;
+}
+#Ofertas h3{
+padding-top: 20px;
+padding-bottom: 20px;   
+text-align: center;
+font-size: 1.5rem;
+
+}
+
+
+/*  animacion en la tarjeta */
+.ofertas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.card-oferta {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 2 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-oferta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-imagen {
+    height: 180px;
+    background-size:cover;
+    background-position:center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.card-oferta:hover .card-imagen {
+    transform: scale(1.08);
+    
+}
+
+/* Contenido del cuerpo de la tarjeta */
+.card-cuerpo {
+    padding: 20px;
+}
+
+.card-cuerpo h3 {
+    font-size: 1.4rem;
+   color: #3769b9;
+    margin-bottom: 8px;
+  
+}
+
+.card-cuerpo .desc {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    
+}
+
+.card-cuerpo .precio {
+    font-size: 26px;
+    
+    color:  #1634f7;
+ 
+    font-weight: bold;
+    margin-bottom: 19px;
+}
+
+.etiqueta {
+    background-color: #fff8e1;
+    color: #a07800;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    /* Para que ocupe solo el ancho de su contenido */
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.etiqueta span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.boton-reservar{
+    background: linear-gradient(to right, #5bc0de, #007bff);
+ 
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 90%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boton-reservar:hover {
+    transform: translateY(-2px);
+   
+    box-shadow: 0 5px 10px rgba(0, 123, 255, 0.3);
+
+}
+
+
+@media (max-width: 768px) {
+    .ofertas-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+}
+
+
+
+footer {
+  color: white;
+  margin: 0 auto;
+  background-color: #0c4a6e;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 4rem;
+  gap: 5rem;
+
+}
+
+.footer_card {
+  display: block;
+  padding: 2rem;
+}
+
+.footer_card h4{
+  margin-bottom: 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .logo {
+        margin-right: 0;
+      
+    }
+
+    .barra_navegacion {
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+    }
+
+    .lista_links {
+        
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        
+        justify-content: center;
+        margin-top: 10px;
+        
+    }
+
+    .lista_links a {
+        font-size: 12px;
+       
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    footer {
+       
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    footer {
+        grid-template-columns: 1fr;
+     
+        gap: 1.5rem;
+    }
+}
