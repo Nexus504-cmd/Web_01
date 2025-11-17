@@ -1,5 +1,111 @@
 /* Estilos para la página de Destinos */
 
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 16px 1rem;
+    background: linear-gradient(rgba(235, 232, 232, 0.6), rgba(172, 171, 166, 0.6)), 
+                url('../html/imagenes_destinos/banner.png') center/cover no-repeat;
+    margin-bottom: 2rem;
+    overflow: hidden;
+
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.highlight {
+    color: #3b82f6;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(59, 130, 246, 0.3);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background: transparent;
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.4) 100%);
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 300px;
+        padding: 3rem 1.5rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-text {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+    }
+}
+
 .destinos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -11,60 +117,273 @@
 
 .destino-card {
     background-color: white;
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .destino-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: #cbd5e1;
 }
 
 .destino-card img {
     width: 100%;
-    height: 210px;
+    height: 200px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.destino-card:hover img {
+    transform: scale(1.05);
 }
 
 .destino-info {
     padding: 1.5rem;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .destino-info h3 {
-    color: #0c4a6e;
-    margin-bottom: 0.5rem;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
-.destino-info p {
-    color: #64748b;
-    font-size: 14px;
-    margin-bottom: 1rem;
-    min-height: 40px;
+.destino-descripcion {
+    color: #475569;
+    font-size: 0.9rem;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.5;
+    flex-grow: 1;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.destino-descripcion:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    height: 3px;
+    width: 10px;
+    background: #3b82f6;
+    border-radius: 2px;
 }
 
 .destino-precio {
     color: #3b82f6;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.destino-card button {
-    background: linear-gradient(rgb(51, 88, 207), rgb(58, 167, 244));
+.destino-precio:before {
+    content: '•';
+    color: #94a3b8;
+    margin-right: 0.25rem;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.destino-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.destino-card .btn-reservar {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
     color: white;
     border: none;
-    padding: 0.7rem 1.5rem;
+    padding: 0.65rem 1.25rem;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    flex-grow: 1;
+    text-align: center;
 }
 
-.destino-card button:hover {
-    transform: scale(1.05);
+.destino-card .btn-reservar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+}
+
+.destino-card .btn-reservar:active {
+    transform: translateY(0);
+}
+
+/* Benefits Section */
+.benefits-section {
+    padding: 4rem 2rem;
+    background-color: #f8fafc;
+    margin-top: 4rem;
+}
+
+.section-title {
+    text-align: center;
+    color: #1e293b;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.benefit-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #c7d2fe;
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: white;
+}
+
+.benefit-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.benefit-title {
+    color: #1e293b;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.benefit-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .benefit-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Contenedor de acciones en cada destino */
+.destino-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-favorito {
+    background: #fff;
+    color: #9ca3af;
+    border: 1px solid #e5e7eb;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-favorito:hover {
+    background: #f8fafc;
+    color: #f59e0b;
+    border-color: #fde68a;
+}
+
+.btn-favorito.favorito {
+    background: #fef3c7;
+    border-color: #fcd34d;
+    color: #f59e0b;
+}
+
+.btn-favorito.favorito:hover {
+    background: #fde68a;
+}
+
+.btn-detalles {
+    background: #e2e8f0;
+    color: #0f172a;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-detalles:hover {
+    filter: brightness(0.98);
 }
 
 .intro-section {
@@ -79,4 +398,168 @@
     max-width: 800px;
     margin: 1rem auto;
     line-height: 1.6;
+}
+
+/* Toolbar para filtro de regiones */
+.destinos-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 4rem 0.5rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.destinos-toolbar select {
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+.destinos-toolbar input[type="search"] {
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    min-width: 220px;
+}
+
+/* Utilidad para ocultar tarjetas via JS */
+.hidden {
+    display: none !important;
+}
+
+/* Accesibilidad: foco visible en tarjetas y botones */
+.destino-card:focus-visible,
+.destino-card .btn-reservar:focus-visible {
+    outline: 3px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+/* Animación de selección tras confirmar reserva */
+.destino-card.seleccionada {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+/* Modal de detalles */
+#modalDetalles {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 2rem 0;
+}
+
+#modalDetalles.open {
+    display: flex;
+}
+
+.modal__content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal__close:hover {
+    background-color: #f1f5f9;
+    color: #ef4444;
+}
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    cursor: pointer;
+}
+
+/* Asegurar que el body no se desplace cuando el modal está abierto */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Estilos para el contenido del modal */
+#modalDetalles h2 {
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+#modalDetalles img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+#modalDetalles p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.modal__precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 1.5rem 0;
+    text-align: right;
+}
+
+/* Ajustes responsivos suaves */
+@media (max-width: 640px) {
+    .destinos-grid {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .intro-section {
+        padding: 1.5rem;
+    }
+    .destinos-toolbar {
+        padding: 0 1rem 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
 }

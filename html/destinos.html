@@ -7,6 +7,7 @@
     <title>Destinos - FlyPerú</title>
     <link rel="stylesheet" href="../css/indexstyles.css">
     <link rel="stylesheet" href="../css/destinosstyles.css">
+    <script defer src="../js/destinos.js"></script>
 </head>
 
 <body>
@@ -26,117 +27,200 @@
     </header>
 
     <main>
-        <div class="intro-section">
-            <h1>Descubre el Perú con FlyPerú</h1>
-            <p>Vuela a los destinos más increíbles del Perú. Desde las playas del norte hasta la selva amazónica, 
-               te llevamos a conocer la riqueza cultural, gastronómica y natural de nuestro país.</p>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Descubre el Perú con <span class="highlight">FlyPerú</span></h1>
+                <p class="hero-text">Vuela a los destinos más increíbles del Perú. Desde las playas del norte hasta la selva amazónica, 
+                   te llevamos a conocer la riqueza cultural, gastronómica y natural de nuestro país.</p>
+                <a href="#destinos" class="cta-button">Explorar destinos</a>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <div class="destinos-toolbar">
+            <label for="filtroDestino">Filtrar por región:</label>
+            <select id="filtroDestino" name="filtroDestino">
+                <option value="todos">Todos</option>
+                <option value="costa">Costa</option>
+                <option value="sierra">Sierra</option>
+                <option value="selva">Selva</option>
+            </select>
+            <label for="buscarDestino">Buscar:</label>
+            <input id="buscarDestino" type="search" placeholder="Nombre o descripción..." aria-label="Buscar destinos" />
+            <label for="ordenarPrecio">Ordenar:</label>
+            <select id="ordenarPrecio" name="ordenarPrecio" aria-label="Ordenar por precio">
+                <option value="none">Sin ordenar</option>
+                <option value="asc">Precio: menor a mayor</option>
+                <option value="desc">Precio: mayor a menor</option>
+            </select>
         </div>
 
         <section class="destinos-grid">
-            <div class="destino-card">
-                <img src="imagenes_destinos/lima.jpg" alt="Lima">
+            <div class="destino-card" data-region="costa">
+                <img src="imagenes_destinos/lima.jpg" alt="Lima - Plaza Mayor" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Lima</h3>
-                    <p>Capital gastronómica de América Latina</p>
+                    <p class="destino-descripcion">Capital gastronómica de América Latina</p>
                     <div class="destino-precio">Desde S/80</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Lima" aria-label="Reservar vuelo a Lima">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Lima" aria-label="Agregar Lima a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/cusco.jpg" alt="Cusco">
+            <div class="destino-card" data-region="sierra">
+                <img src="imagenes_destinos/cusco.jpg" alt="Cusco - Plaza de Armas" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Cusco</h3>
-                    <p>Ciudad imperial y puerta a Machu Picchu</p>
+                    <p class="destino-descripcion">Puerta de entrada a Machu Picchu</p>
                     <div class="destino-precio">Desde S/120</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Cusco" aria-label="Reservar vuelo a Cusco">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Cusco" aria-label="Agregar Cusco a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/arequipa.jpg" alt="Arequipa">
+            <div class="destino-card" data-region="sierra">
+                <img src="imagenes_destinos/arequipa.jpg" alt="Arequipa - Centro histórico" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Arequipa</h3>
-                    <p>La ciudad blanca y el Cañón del Colca</p>
+                    <p class="destino-descripcion">Ciudad Blanca y Cañón del Colca</p>
                     <div class="destino-precio">Desde S/95</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Arequipa" aria-label="Reservar vuelo a Arequipa">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Arequipa" aria-label="Agregar Arequipa a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/iquitos.jpg" alt="Iquitos">
+            <div class="destino-card" data-region="selva">
+                <img src="imagenes_destinos/iquitos.jpg" alt="Iquitos - Catedral" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Iquitos</h3>
-                    <p>Aventura en la selva amazónica peruana</p>
+                    <p class="destino-descripcion">Puerta a la Amazonía peruana</p>
                     <div class="destino-precio">Desde S/150</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Iquitos" aria-label="Reservar vuelo a Iquitos">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Iquitos" aria-label="Agregar Iquitos a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/trujillo.jpg" alt="Trujillo">
+            <div class="destino-card" data-region="costa">
+                <img src="imagenes_destinos/trujillo.jpg" alt="Trujillo - Centro" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Trujillo</h3>
-                    <p>Ciudad de la eterna primavera</p>
+                    <p class="destino-descripcion">Cuna de la marinera y Chan Chan</p>
                     <div class="destino-precio">Desde S/85</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Trujillo" aria-label="Reservar vuelo a Trujillo">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Trujillo" aria-label="Agregar Trujillo a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/piura.jpg" alt="Piura">
+            <div class="destino-card" data-region="costa">
+                <img src="imagenes_destinos/piura.jpg" alt="Piura - Catedral" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Piura</h3>
-                    <p>Playas paradisíacas del norte peruano</p>
+                    <p class="destino-descripcion">Playas y gastronomía norteña</p>
                     <div class="destino-precio">Desde S/110</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Piura" aria-label="Reservar vuelo a Piura">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Piura" aria-label="Agregar Piura a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/puno.jpg" alt="Puno">
+            <div class="destino-card" data-region="sierra">
+                <img src="imagenes_destinos/puno.jpg" alt="Puno - Lago Titicaca" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Puno</h3>
-                    <p>Capital folklórica y Lago Titicaca</p>
+                    <p class="destino-descripcion">Lago Titicaca y cultura andina</p>
                     <div class="destino-precio">Desde S/130</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Puno" aria-label="Reservar vuelo a Puno">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Puno" aria-label="Agregar Puno a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/ayacucho.jpg" alt="Ayacucho">
+            <div class="destino-card" data-region="sierra">
+                <img src="imagenes_destinos/ayacucho.jpg" alt="Ayacucho - Arco" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Ayacucho</h3>
-                    <p>Cuna de la cultura Wari y artesanías</p>
+                    <p class="destino-descripcion">Arte popular y tradiciones</p>
                     <div class="destino-precio">Desde S/100</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Ayacucho" aria-label="Reservar vuelo a Ayacucho">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Ayacucho" aria-label="Agregar Ayacucho a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="destino-card">
-                <img src="imagenes_destinos/tarapoto.jpg" alt="Tarapoto">
+            <div class="destino-card" data-region="selva">
+                <img src="imagenes_destinos/tarapoto.jpg" alt="Tarapoto - Cataratas" loading="lazy" decoding="async">
                 <div class="destino-info">
                     <h3>Tarapoto</h3>
-                    <p>Paraíso natural de la selva alta</p>
+                    <p class="destino-descripcion">Selva alta y cataratas</p>
                     <div class="destino-precio">Desde S/140</div>
-                    <button>Reservar Ahora</button>
+                    <div class="destino-actions">
+                        <button class="btn-reservar" data-destino="Tarapoto" aria-label="Reservar vuelo a Tarapoto">Reservar Ahora</button>
+                        <button class="btn-favorito" data-destino="Tarapoto" aria-label="Agregar Tarapoto a favoritos" title="Agregar a favoritos">★</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <h1>Beneficios de Volar con Nosotros</h1>
-        <section class="cuerpo_final">  
-            <div class="div4">
-                <h3>Vuelos Diarios</h3>
-                <p>Múltiples horarios disponibles para tu comodidad</p>
+        <!-- Modal de detalles -->
+        <div id="modalDetalles" class="modal" aria-hidden="true">
+            <div class="modal__overlay" data-modal-close></div>
+            <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+                <button class="modal__close" aria-label="Cerrar" data-modal-close>×</button>
+                <h2 id="modalTitulo">Detalles del destino</h2>
+                <img id="modalImagen" alt="" />
+                <p id="modalDescripcion"></p>
+                <div id="modalPrecio" class="modal__precio"></div>
             </div>
-            <div class="div5">
-                <h3>Conexiones Rápidas</h3>
-                <p>Viaja a cualquier destino del Perú en pocas horas</p>
-            </div>
-            <div class="div6">
-                <h3>Equipaje Incluido</h3>
-                <p>Maleta de mano y equipaje facturado en todas las tarifas</p>
+        </div>
+
+        <section class="benefits-section">
+            <h2 class="section-title">Beneficios de Volar con Nosotros</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Vuelos Diarios</h3>
+                    <p class="benefit-description">Múltiples horarios disponibles para tu comodidad</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Conexiones Rápidas</h3>
+                    <p class="benefit-description">Viaja a cualquier destino del Perú en pocas horas</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Equipaje Incluido</h3>
+                    <p class="benefit-description">Maleta de mano y equipaje facturado en todas las tarifas</p>
+                </div>
             </div>
         </section>
     </main>
