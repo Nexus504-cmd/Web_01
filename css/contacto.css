@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .logo{
+    margin-right: 15rem;
+  }
+  .logo img{
+    height: 4rem;
+  }
+  .barra_navegacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(51, 88, 207),rgb(58, 167, 244));
+    padding: 0.1rem 1.5rem;
+  }
+  .lista_links{
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  
+  .lista_links a{
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0.5rem 0.5rem;
+    transition: 1.3s  ease;
+  }
+  
+  .lista_links a:hover{
+    background-color: rgb(64, 167, 251);
+    border-radius: 5px;
+  }
+  header{
+      height: 600px;
+      position: relative;
+      display:  grid;
+      grid-template-rows: 70px 1fr;
+  }
+  .Informacion{
+  padding: 0;
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: center;
+  gap: 1em;
+  padding-bottom: 100px;
+  text-align: center;
+  }
+  .Informacion::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(180deg, #00000075 0%, #00000079 100% ), url(/imagenes/Terminal-aeropuerto-1.jpg);
+      background-size: cover;
+      clip-path: polygon(0 0,100% 0,100% 80%,50% 95%,0 80%);
+      z-index: -1;
+  }
+  .Presentacion{
+      font-size: 6cap;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: white;
+  }
+  .texto0{
+      color: white;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .Historia{
+    align-items: center;
+      padding: 2rem;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+  }
+  
+  .div1{
+      padding-top: 1rem;
+      width: 600px;
+      height: 500px;
+  
+  }
+  .Titulo{
+      font-size: 40px;
+      color: rgb(10, 85, 136);
+      text-align: center;
+      padding-bottom: 3.5rem;
+  }
+  .texto1{
+      font-size: 19px;
+      padding-left: 3rem;
+      color: gray;
+      padding-bottom: 2rem;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding-right: 1.5rem;
+  text-align: left;
+  }
+  .Imagen{
+     width: 600px;
+      height: 700px;
+      padding-left: 4rem;   
+  }
+  .imagenAvi{
+      
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.76);
+  }
+  .Informacion2{
+      width: 100%;
+      height: 300px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: auto;
+      padding: 2rem;
+      align-content: center;
+  }
+  .Titulo2{
+   font-size: 40px;
+      color: rgb(10, 85, 136);
+      text-align: center;
+      
+  }
+  .div2{
+      text-align: justify;
+      width: 190;
+      height: 280;
+      text-align: center;
+      padding: 3rem;
+      box-shadow: #00000075;
+      border-radius: 15px;
+      transition: all 0.3s ease; 
+  }
+  .div2:hover{
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+  }
+  .TT{
+      padding-bottom: 1.5rem;
+      font-size: 35px;
+  }
+  .Infomen{
+      color: rgb(10, 85, 136);
+      font-weight: bold;
+      font-size: 19px;
+  }
+  .infomenor{
+      padding-top: 1rem;
+      color: gray;
+      font-weight: bold;
+  }
+  .Informacion3{
+      width: 100%;
+      height: 300px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: auto;
+      padding: 2rem;
+      align-content: center;
+  }
+  .separador{
+      width: 100%;
+      padding: 2rem;
+  }

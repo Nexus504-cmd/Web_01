@@ -58,26 +58,51 @@
         <h1>Ofertas Destacadas</h1>
         <section class="cuerpo_ofertas">
 
-            <div class="index_cards">
+            <div id="index-cards" class="index_cards">
                 <img src="imagenes_destinos/lima.jpg" height="210px">
-                <h3>Lima</h3>
-                <p>Descubre la capital gastronómica de América Latina</p>
-                <h3>Desde s/80</h3>
-                <button onclick="location.href='destinos.html'">Ver Ofertas</button>
+                <h3 id="titulo">Lima</h3>
+                <p id="descripcion">Descubre la capital gastronómica de América Latina</p>
+                <h3 id="precio">Desde s/80</h3>
+                <button id = "btn-ofertas">Informacion</button>
             </div>
             <div class="index_cards">
                 <img src="imagenes_destinos/cusco.jpg" height="210px">
-                <h3>Cusco</h3>
-                <p>Explora la ciudad imperial y Machu Picchu</p>
-                <h3>Desde s/120</h3>
-                <button onclick="location.href='destinos.html'">Ver Ofertas</button>
+                <h3 id="titulo">Cusco</h3>
+                <p id="descripcion">Explora la ciudad imperial y Machu Picchu</p>
+                <h3 id="precio">Desde s/120</h3>
+                <button id = "btn-ofertas">Informacion</button>
             </div>
             <div class="index_cards">
                 <img src="imagenes_destinos/arequipa.jpg" height="210px">
-                <h3>Arequipa</h3>
-                <p>Visita la ciudad blanca y el Cañón del Colca</p>
-                <h3>Desde s/95</h3>
-                <button onclick="location.href='destinos.html'">Ver Ofertas</button>
+                <h3 id="titulo">Arequipa</h3>
+                <p id="descripcion">Visita la ciudad blanca y el Cañón del Colca</p>
+                <h3 id="precio">Desde s/95</h3>
+                <button id = "btn-ofertas">Informacion</button>
+            </div>
+
+            <div id= "modal" class="modal">
+                <div class=" modal-contenido">
+                    
+                    <h3 id="modal-infotitulo" style="text-align: center; margin-bottom: 5px;
+                    font-family:'Times New Roman', Times, serif;
+                    font-size: 24px;
+                    "></h3>
+                    <h3>Descripcion:</h3>
+                    <p id = "modal-descripcion"></p>
+                    <h3>Clima</h3>
+                    <p id= "modal-clima"></p>
+                    <h3>Año</h3>
+                    <p id = "modal-año"></p>
+                    <h3>Ubicacion</h3>
+                    <p id="modal-ubicacion"></p>
+                    <h3>Turismo</h3>
+                    <p id = "modal-turismo"></p>
+                    <h3>Precio</h3>
+                    <p id = "modal-precio" style="margin-bottom: 5px;"></p>
+                    <button id="btnreserva">Reservar</button>
+
+
+                </div>
             </div>
 
         </section>
@@ -145,4 +170,6 @@
         </div>
 
     </footer>
+
+    <script src="../js/index.js"></script>
 </body>
