@@ -81,3 +81,63 @@ window.addEventListener("click", (e) => {
         modal.style.display = "none";
     }
 })
+
+
+
+const buscarBtn = document.getElementById('buscarBtn');
+const origenInput = document.getElementById('origen-input');
+const destinoInput = document.getElementById('destino-input');
+const fechaInput = document.getElementById('fecha-input');
+const resultados = document.getElementById('resultados');
+
+if (buscarBtn) {
+    buscarBtn.addEventListener('click', () => {
+        const origen = origenInput ? origenInput.value.trim() : '';
+        const destino = destinoInput ? destinoInput.value.trim() : '';
+        const fecha = fechaInput ? fechaInput.value : '';
+
+
+        const titulo = (origen || 'Origen desconocido') + (destino ? (' → ' + destino) : '');
+        const descripcion = fecha ? ('Salida: ' + fecha) : 'Fecha no indicada';
+
+
+        const card = document.createElement('div');
+        card.className = 'index_cards';
+        
+        let imgSrc = '';
+
+        switch (destino.toLowerCase(destino)) {
+            case 'lima':
+                imgSrc = '/img/img_destinos/lima.jpg';
+                break;
+            case 'cusco':
+                imgSrc = '/img/img_destinos/cusco.jpg';
+                break;
+            case 'arequipa':
+                imgSrc = '/img/img_destinos/arequipa.jpg';
+                break;
+            default:
+                imgSrc = '/img/img_destinos/ayacucho.jpg';
+        }
+
+        
+
+        card.innerHTML = `
+            <img src="${imgSrc}" alt="${titulo}">
+            <h3>${titulo}</h3>
+            <p>${descripcion}</p>
+            <h3>Precio: Consultar</h3>
+            <button id="btn-ofertas">Ver detalles</button>
+        `;
+
+
+        if (resultados) {
+            while (resultados.children.length > 1) {
+                resultados.removeChild(resultados.lastChild);
+            }
+            resultados.style.display = 'grid';
+            
+            resultados.appendChild(card);
+        }
+    });
+}
