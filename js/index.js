@@ -108,16 +108,16 @@ if (buscarBtn) {
 
         switch (destino.toLowerCase(destino)) {
             case 'lima':
-                imgSrc = '/img/img_destinos/lima.jpg';
+                imgSrc = 'imagenes_destinos/lima.jpg';
                 break;
             case 'cusco':
-                imgSrc = '/img/img_destinos/cusco.jpg';
+                imgSrc = 'imagenes_destinos/cusco.jpg';
                 break;
             case 'arequipa':
-                imgSrc = '/img/img_destinos/arequipa.jpg';
+                imgSrc = 'imagenes_destinos/arequipa.jpg';
                 break;
             default:
-                imgSrc = '/img/img_destinos/ayacucho.jpg';
+                imgSrc = 'imagenes_destinos/ayacucho.jpg';
         }
 
         
