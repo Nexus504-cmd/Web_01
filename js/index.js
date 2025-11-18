@@ -11,7 +11,7 @@ const modalturismo = document.getElementById("modal-turismo");
 const modalprecio = document.getElementById("modal-precio");
 
 //informacion general
-//const indexcard = document.getElementById("index-cards");
+
 //Lima
 const arrayInfoLima = ["Templado, húmedo y sin lluvias intensas durante el año.",
     "1535",
