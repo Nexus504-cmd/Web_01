@@ -1,0 +1,12 @@
+.Informacion::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(180deg, #00000075 0%, #00000079 100% ), url(/Web_01/html/imagenes_destinos/ESPE.jpg);
+      background-size: cover;
+      clip-path: polygon(0 0,100% 0,100% 80%,50% 95%,0 80%);
+      z-index: -1;
+  }

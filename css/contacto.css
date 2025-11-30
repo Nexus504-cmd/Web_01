@@ -1,10 +1,11 @@
 * {
-    margin: 0;
-    padding: 0;
-    margin-top: 0;
+   margin: 0;
+  padding: 0;
     box-sizing: border-box;
   }
   body{
+    margin: 0;
+    padding: 0;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -47,7 +48,6 @@
       grid-template-rows: 70px 1fr;
   }
   .Informacion{
-  padding: 0;
   display: grid;
   grid-auto-rows: max-content;
   align-content: center;
@@ -55,18 +55,20 @@
   padding-bottom: 100px;
   text-align: center;
   }
-  .Informacion::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(180deg, #00000075 0%, #00000079 100% ), url(/html/avion.png);
-      background-size: cover;
-      clip-path: polygon(0 0,100% 0,100% 80%,50% 95%,0 80%);
-      z-index: -1;
-  }
+ header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #00000075 0%, #00000079 100%), url(/Web_01/html/imagenes_destinos/ESPE.jpg);
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0,100% 0,100% 80%,50% 95%,0 80%);
+    z-index: -1;
+}
+
   .Presentacion{
       font-size: 6cap;
       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -259,9 +261,217 @@ transition: all 0.3s ease;
 }
 .Especificar{
   padding: 2rem;
-  margin-top: 1px;
   justify-content: center;
   border-radius: 15px;
   height:auto;
 }
-  
+footer {
+  width: 100vw;
+  color: white;
+  background-color: #0c4a6e;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);padding: 4rem;
+  padding: 4rem;
+  gap: 5rem;
+ box-sizing: border-box;
+
+}
+
+.footer_card {
+  display: block;
+  padding: 2rem;
+}
+
+.footer_card h4{
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 900px) {
+    .barra_navegacion {
+        flex-direction: column;
+        height: 112px;
+        gap: 1rem;
+    }
+
+    .logo {
+        margin-right: 0;
+    }
+
+    .lista_links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    
+    header {
+        height: 450px;
+    }
+
+    .Presentacion {
+        font-size: 3rem;
+    }
+    .Historia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .div1 {
+        width: 100%;
+        max-width: 500px; 
+        padding: 0 1rem;
+        height: auto;
+    }
+    .texto1 {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: left; 
+        font-size: 18px;
+    }
+
+    .Imagen {
+        width: 100%;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .imagenAvi {
+        width: 90%;
+        max-width: 450px;
+        height: auto;
+    }
+    .Informacion2,.Informacion3 {
+        grid-auto-flow: row;
+        height: auto;
+        gap: 2rem;
+        text-align: center;
+    }
+    .div2 {
+        width: 100%;
+        padding: 2rem 1rem;
+    }
+    .request {
+        grid-auto-flow: row;
+        height: auto;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    .fila1 {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .campo {
+        width: 100%;
+    }
+    .Especificar {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 3rem 2rem;
+        gap: 2rem;
+    }
+}
+@media (max-width: 600px) {
+    .Historia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .div1 {
+        width: 100%;
+        max-width: 500px; 
+        padding: 0 1rem;
+        height: auto;
+    }
+
+    .texto1 {
+        text-align: center;
+        padding: 0;
+        font-size: 17px;
+    }
+
+    .Imagen {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+
+    .imagenAvi {
+        width: 90%;
+        max-width: 320px;
+        height: auto;
+    }
+
+    .Presentacion {
+        font-size: 2.2rem;
+    }
+
+    .texto0 {
+        font-size: 0.9rem;
+    }
+    .Informacion2,
+    .Informacion3 {
+        grid-auto-flow: row;
+        gap: 1.5rem;
+        height: auto;
+        text-align: center;
+    }
+
+    .div2 {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .TT {
+        font-size: 26px;
+    }
+
+    .fila1 {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .campo {
+        width: 100%;
+    }
+
+    .form {
+        padding: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+    footer {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 2rem 1rem;
+    }
+
+    .footer_card {
+        padding: 1rem;
+    }
+}
+@media (max-width: 350px) {
+    footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .lista_links {
+        font-size: 13px;
+    }
+}
