@@ -1,225 +1,271 @@
-// Interactividad para Destinos - fundamentos según materiales TW-S11 a TW-S14
-// Uso de let/const, prompt, alert, confirm, console.log, DOM (getElementById, querySelector, querySelectorAll),
-// eventos (onchange, click), classList.toggle, innerHTML, style, arrays.
 
-(() => {
-  'use strict';
+// --- VARIABLES GLOBALES ---
+let reservas = []; // Array para guardar las reservas
+let ordenOriginal = []; // Guarda el orden original de las tarjetas
+let favoritos = []; // Array de destinos favoritos
 
-  /** Estado simple en memoria */
-  const reservas = []; // push() para guardar destinos reservados ficticios
-  const state = { region: 'todos', search: '', order: 'none' };
+// --- FUNCIONES DE FILTRADO Y BÚSQUEDA ---
 
-  /** Utilidades DOM */
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+// Actualiza qué tarjetas se muestran según los filtros activos
+function actualizarTarjetas() {
+  const filtroRegion = document.getElementById('filtroDestino').value;
+  const textoBusqueda = document.getElementById('buscarDestino').value.toLowerCase();
+  const tarjetas = document.querySelectorAll('.destino-card');
 
-  // Se eliminó el saludo/prompt para evitar interrupciones de UX.
+  tarjetas.forEach(tarjeta => {
+    const region = tarjeta.getAttribute('data-region');
+    const textoTarjeta = tarjeta.textContent.toLowerCase();
 
-  /** Helpers */
-  const cardsContainer = () => $('.destinos-grid');
-  const getCards = () => $$('.destino-card', cardsContainer());
-  const slugh = s => (s || '').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
-  const parsePrecio = (text) => {
-    // Extrae número de "Desde S/130"
-    const m = (text || '').match(/([0-9]+(?:\.[0-9]+)?)/);
-    return m ? parseFloat(m[1]) : Infinity;
-  };
+    // Verificar si coincide con el filtro de región
+    const coincideRegion = (filtroRegion === 'todos' || region === filtroRegion);
 
-  // Mantener orden original para "Sin ordenar"
-  let originalOrder = [];
+    // Verificar si coincide con la búsqueda
+    const coincideBusqueda = (textoBusqueda === '' || textoTarjeta.includes(textoBusqueda));
 
-  function updateVisibility() {
-    const region = state.region;
-    const term = slugh(state.search);
-    getCards().forEach(card => {
-      const regionCard = card.getAttribute('data-region');
-      const text = slugh(card.textContent);
-      const matchRegion = region === 'todos' || regionCard === region;
-      const matchSearch = term.length === 0 || text.includes(term);
-      const visible = matchRegion && matchSearch;
-      card.classList.toggle('hidden', !visible);
-    });
+    // Mostrar u ocultar la tarjeta
+    if (coincideRegion && coincideBusqueda) {
+      tarjeta.classList.remove('hidden');
+    } else {
+      tarjeta.classList.add('hidden');
+    }
+  });
+}
+
+// Configura el filtro por región
+function configurarFiltro() {
+  const selectFiltro = document.getElementById('filtroDestino');
+
+  selectFiltro.addEventListener('change', function () {
+    actualizarTarjetas();
+    console.log('Filtro aplicado:', this.value);
+  });
+}
+
+// Configura el buscador de texto
+function configurarBuscador() {
+  const inputBuscar = document.getElementById('buscarDestino');
+
+  inputBuscar.addEventListener('input', function () {
+    actualizarTarjetas();
+    console.log('Búsqueda:', this.value);
+  });
+}
+
+// --- FUNCIONES DE ORDENAMIENTO ---
+
+// Extrae el precio de un texto como "Desde S/130"
+function obtenerPrecio(texto) {
+  const numero = texto.match(/([0-9]+)/);
+  return numero ? parseInt(numero[1]) : 0;
+}
+
+// Configura el ordenamiento por precio
+function configurarOrdenamiento() {
+  const selectOrden = document.getElementById('ordenarPrecio');
+  const contenedor = document.querySelector('.destinos-grid');
+
+  // Guardar orden original la primera vez
+  if (ordenOriginal.length === 0) {
+    ordenOriginal = Array.from(document.querySelectorAll('.destino-card'));
   }
 
-  /** Filtrado por región usando onchange */
-  function setupFiltro() {
-    const select = document.getElementById('filtroDestino');
-    if (!select) return;
-    state.region = select.value;
-    select.addEventListener('change', () => {
-      state.region = select.value;
-      updateVisibility();
-      console.log('Filtro región:', state.region);
-    });
-    updateVisibility();
-  }
+  selectOrden.addEventListener('change', function () {
+    const tipoOrden = this.value; // 'none', 'asc' o 'desc'
 
-  /** Buscador por texto */
-  function setupBusqueda() {
-    const input = document.getElementById('buscarDestino');
-    if (!input) return;
-    input.addEventListener('input', () => {
-      state.search = input.value || '';
-      updateVisibility();
-      console.log('Búsqueda:', state.search);
-    });
-  }
-
-  /** Ordenamiento por precio */
-  function setupOrden() {
-    const select = document.getElementById('ordenarPrecio');
-    const container = cardsContainer();
-    if (!select || !container) return;
-
-    if (originalOrder.length === 0) {
-      originalOrder = getCards();
+    // Si es "sin ordenar", restaurar orden original
+    if (tipoOrden === 'none') {
+      ordenOriginal.forEach(tarjeta => contenedor.appendChild(tarjeta));
+      console.log('Orden restaurado');
+      return;
     }
 
-    const aplicarOrden = () => {
-      state.order = select.value; // none | asc | desc
-      if (state.order === 'none') {
-        originalOrder.forEach(card => container.appendChild(card));
-        console.log('Orden: sin ordenar');
+    // Obtener todas las tarjetas y ordenarlas
+    const tarjetas = Array.from(document.querySelectorAll('.destino-card'));
+
+    tarjetas.sort(function (a, b) {
+      const precioA = obtenerPrecio(a.querySelector('.destino-precio').textContent);
+      const precioB = obtenerPrecio(b.querySelector('.destino-precio').textContent);
+
+      if (tipoOrden === 'asc') {
+        return precioA - precioB; // Menor a mayor
+      } else {
+        return precioB - precioA; // Mayor a menor
+      }
+    });
+
+    // Reorganizar las tarjetas en el DOM
+    tarjetas.forEach(tarjeta => contenedor.appendChild(tarjeta));
+    console.log('Ordenado por precio:', tipoOrden);
+  });
+}
+
+// --- FUNCIONES DE RESERVAS ---
+
+// Configura los botones de reservar
+function configurarReservas() {
+  const botonesReservar = document.querySelectorAll('.btn-reservar');
+
+  botonesReservar.forEach(boton => {
+    boton.addEventListener('click', function () {
+      const destino = this.getAttribute('data-destino');
+
+      // Confirmar con el usuario
+      const confirmar = confirm(`¿Deseas reservar tu vuelo a ${destino}?`);
+
+      if (confirmar) {
+        reservas.push(destino); // Agregar al array de reservas
+        alert(`¡Reserva a ${destino} registrada!`);
+
+        // Resaltar la tarjeta brevemente
+        const tarjeta = this.closest('.destino-card');
+        tarjeta.classList.add('seleccionada');
+        setTimeout(() => tarjeta.classList.remove('seleccionada'), 1200);
+
+        console.log('Reservas actuales:', reservas);
+      } else {
+        console.log('Reserva cancelada');
+      }
+    });
+  });
+}
+
+// --- FUNCIONES DE FAVORITOS ---
+
+// Cargar favoritos desde localStorage
+function cargarFavoritos() {
+  const guardados = localStorage.getItem('favoritosDestinos');
+  return guardados ? JSON.parse(guardados) : [];
+}
+
+// Guardar favoritos en localStorage
+function guardarFavoritos() {
+  localStorage.setItem('favoritosDestinos', JSON.stringify(favoritos));
+}
+
+// Actualiza la apariencia de los botones de favoritos
+function actualizarBotonesFavoritos() {
+  const botonesFavorito = document.querySelectorAll('.btn-favorito');
+
+  botonesFavorito.forEach(boton => {
+    const destino = boton.getAttribute('data-destino');
+    const esFavorito = favoritos.includes(destino);
+
+    if (esFavorito) {
+      boton.classList.add('favorito');
+      boton.title = 'Quitar de favoritos';
+    } else {
+      boton.classList.remove('favorito');
+      boton.title = 'Agregar a favoritos';
+    }
+  });
+}
+
+// Configura los botones de favoritos
+function configurarFavoritos() {
+  favoritos = cargarFavoritos(); // Cargar favoritos guardados
+  actualizarBotonesFavoritos();
+
+  const botonesFavorito = document.querySelectorAll('.btn-favorito');
+
+  botonesFavorito.forEach(boton => {
+    boton.addEventListener('click', function () {
+      const destino = this.getAttribute('data-destino');
+
+      // Agregar o quitar de favoritos
+      if (favoritos.includes(destino)) {
+        favoritos = favoritos.filter(d => d !== destino); // Quitar
+      } else {
+        favoritos.push(destino); // Agregar
+      }
+
+      guardarFavoritos();
+      actualizarBotonesFavoritos();
+      console.log('Favoritos:', favoritos);
+    });
+  });
+}
+
+// --- FUNCIONES DEL MODAL ---
+
+// Configura el modal de detalles
+function configurarModal() {
+  const modal = document.getElementById('modalDetalles');
+  const overlay = modal.querySelector('[data-modal-close]');
+  const botonCerrar = modal.querySelector('.modal__close');
+
+  // Función para abrir el modal
+  function abrirModal(datos) {
+    document.getElementById('modalTitulo').textContent = datos.titulo;
+    document.getElementById('modalImagen').src = datos.imagen;
+    document.getElementById('modalDescripcion').textContent = datos.descripcion;
+    document.getElementById('modalPrecio').textContent = datos.precio;
+
+    modal.classList.add('open');
+  }
+
+  // Función para cerrar el modal
+  function cerrarModal() {
+    modal.classList.remove('open');
+  }
+
+  // Eventos para cerrar el modal
+  overlay.addEventListener('click', cerrarModal);
+  botonCerrar.addEventListener('click', cerrarModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') cerrarModal();
+  });
+
+  // Abrir modal al hacer click en una tarjeta
+  const tarjetas = document.querySelectorAll('.destino-card');
+
+  tarjetas.forEach(tarjeta => {
+    tarjeta.addEventListener('click', function (e) {
+      // No abrir si se hizo click en un botón
+      if (e.target.closest('.btn-reservar') || e.target.closest('.btn-favorito')) {
         return;
       }
-      const cards = getCards().slice();
-      cards.sort((a, b) => {
-        const pa = parsePrecio($('.destino-precio', a)?.textContent);
-        const pb = parsePrecio($('.destino-precio', b)?.textContent);
-        return state.order === 'asc' ? pa - pb : pb - pa;
-      });
-      cards.forEach(card => container.appendChild(card));
-      console.log('Orden aplicado:', state.order);
-    };
 
-    select.addEventListener('change', aplicarOrden);
-  }
+      // Obtener datos de la tarjeta
+      const datos = {
+        titulo: this.querySelector('h3').textContent,
+        imagen: this.querySelector('img').src,
+        descripcion: this.querySelector('.destino-info p').textContent,
+        precio: this.querySelector('.destino-precio').textContent
+      };
 
-  /** Manejo de reservas con confirm() y array.push() */
-  function setupReservas() {
-    $$('.btn-reservar').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const destino = btn.getAttribute('data-destino') || 'Destino';
-        const ok = confirm(`¿Deseas reservar ahora tu vuelo a ${destino}?`);
-        if (ok) {
-          reservas.push(destino); // array.push()
-          alert(`¡Reserva preliminar a ${destino} registrada!`);
-          // Resaltar tarjeta asociada
-          const card = btn.closest('.destino-card');
-          if (card) {
-            card.classList.toggle('seleccionada', true);
-            setTimeout(() => card.classList.toggle('seleccionada', false), 1200);
-          }
-          console.log('Reservas:', reservas);
-        } else {
-          console.log('Reserva cancelada para', destino);
-        }
-      });
+      abrirModal(datos);
     });
-  }
-
-  /** Favoritos con localStorage */
-  const LS_KEY = 'favoritosDestinos';
-  const loadFavoritos = () => {
-    try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch { return []; }
-  };
-  const saveFavoritos = (arr) => localStorage.setItem(LS_KEY, JSON.stringify(arr));
-
-  function setupFavoritos() {
-    let favoritos = loadFavoritos();
-
-    const aplicarUI = () => {
-      $$('.btn-favorito').forEach(btn => {
-        const destino = btn.getAttribute('data-destino');
-        const isFav = favoritos.includes(destino);
-        btn.classList.toggle('favorito', isFav);
-        btn.setAttribute('aria-pressed', String(isFav));
-        btn.title = isFav ? 'Quitar de favoritos' : 'Agregar a favoritos';
-      });
-    };
-
-    aplicarUI();
-
-    $$('.btn-favorito').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const destino = btn.getAttribute('data-destino');
-        if (favoritos.includes(destino)) {
-          favoritos = favoritos.filter(d => d !== destino);
-        } else {
-          favoritos.push(destino);
-        }
-        saveFavoritos(favoritos);
-        aplicarUI();
-        console.log('Favoritos:', favoritos);
-      });
-    });
-  }
-
-  /** Modal de detalles */
-  function setupModal() {
-    const modal = document.getElementById('modalDetalles');
-    if (!modal) return;
-    const overlay = modal.querySelector('[data-modal-close]');
-    const closeBtn = modal.querySelector('.modal__close');
-    const img = document.getElementById('modalImagen');
-    const titulo = document.getElementById('modalTitulo');
-    const desc = document.getElementById('modalDescripcion');
-    const precio = document.getElementById('modalPrecio');
-
-    const abrir = (data) => {
-      titulo.textContent = data.titulo;
-      img.src = data.img;
-      img.alt = `Imagen de ${data.titulo}`;
-      desc.textContent = data.descripcion;
-      precio.textContent = data.precio;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-    };
-    const cerrar = () => {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-    };
-
-    overlay.addEventListener('click', cerrar);
-    closeBtn.addEventListener('click', cerrar);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrar(); });
-
-    // Abrir al hacer click en cualquier tarjeta, excepto si el click fue en una acción (reservar/favorito)
-    getCards().forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-reservar') || e.target.closest('.btn-favorito')) return;
-        const data = {
-          titulo: $('h3', card)?.textContent?.trim() || 'Destino',
-          img: $('img', card)?.src,
-          descripcion: $('.destino-info p', card)?.textContent?.trim() || '',
-          precio: $('.destino-precio', card)?.textContent?.trim() || ''
-        };
-        abrir(data);
-      });
-    });
-  }
-
-  /** Accesibilidad/teclado: Enter abre detalles */
-  function setupAccesibilidad() {
-    $$('.destino-card').forEach(card => {
-      card.setAttribute('tabindex', '0');
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          // Simular click de tarjeta para abrir modal
-          card.click();
-        }
-      });
-    });
-  }
-
-  // Inicio
-  document.addEventListener('DOMContentLoaded', () => {
-    setupFiltro();
-    setupBusqueda();
-    setupOrden();
-    setupReservas();
-    setupFavoritos();
-    setupModal();
-    setupAccesibilidad();
   });
-})();
+}
+
+// --- FUNCIONES DE ACCESIBILIDAD ---
+
+// Permite abrir el modal con la tecla Enter
+function configurarAccesibilidad() {
+  const tarjetas = document.querySelectorAll('.destino-card');
+
+  tarjetas.forEach(tarjeta => {
+    tarjeta.setAttribute('tabindex', '0'); // Hacer la tarjeta enfocable
+
+    tarjeta.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        this.click(); // Simular click
+      }
+    });
+  });
+}
+
+// --- INICIALIZACIÓN ---
+
+// Cuando la página carga, inicializar todas las funcionalidades
+document.addEventListener('DOMContentLoaded', function () {
+  configurarFiltro();
+  configurarBuscador();
+  configurarOrdenamiento();
+  configurarReservas();
+  configurarFavoritos();
+  configurarModal();
+  configurarAccesibilidad();
+
+  console.log('Sistema de destinos inicializado');
+});
